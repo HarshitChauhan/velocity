@@ -1,4 +1,4 @@
-const {GENESIS_DATA} = require('./config.js');
+const { GENESIS_DATA } = require('./config.js');
 const createHash = require('./crypto.js')
 
 class Block {
@@ -10,16 +10,18 @@ class Block {
     }
 
     // to create genesis block at start of the blockchain
-    static createGenesisBlock(){
+    static createGenesisBlock() {
         return new this(GENESIS_DATA);
     }
-    
+
     // to create new block in the blockchain
-    static mineBlock({previousBlock, data}){
+    static mineBlock({ previousBlock, data }) {
+        const timestamp = Date.now();
+        const previousHash = previousBlock.hash;
         const block = new this({
-            timestamp: Date.now(),
-            previousHash: previousBlock.hash,
-            hash: createHash(previousBlock.hash + data),
+            timestamp,
+            previousHash,
+            hash: createHash(timestamp, previousHash, data),
             data
         });
         return block;
