@@ -46,7 +46,7 @@ class Blockchain {
             }
 
             // checking if the block in itself is valid or not
-            if (currentBlock.hash !== (createHash(currentBlock.timestamp, currentBlock.previousHash, currentBlock.data))) {
+            if (currentBlock.hash !== (createHash(currentBlock.timestamp, currentBlock.previousHash, currentBlock.data, currentBlock.nonce, currentBlock.difficulty))) {
                 return false;
             }
 
@@ -71,10 +71,10 @@ class Blockchain {
     }
 }
 
-// const blockchain = new Blockchain();
-// blockchain.addBlock({data:"blockchain data 1"})
-// blockchain.addBlock({data:"blockchain data 2"})
+const blockchain = new Blockchain();
+blockchain.addBlock({data:"blockchain data 1"})
+blockchain.addBlock({data:"blockchain data 2"})
 
-// console.log(Blockchain.isChainValid(blockchain.chain));
-// console.log(blockchain);
+console.log(Blockchain.isChainValid(blockchain.chain));
+console.log(blockchain);
 module.exports = Blockchain;
