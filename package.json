@@ -4,7 +4,7 @@
   "description": "A decentralised peer to peer blockchain network.",
   "main": "index.js",
   "scripts": {
-    "start": "node src/block.js",
+    "start": "nodemon src/block.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -14,5 +14,8 @@
     "network"
   ],
   "author": "Harshitkumar2503@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
