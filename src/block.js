@@ -1,5 +1,7 @@
 const { GENESIS_DATA, MINE_RATE } = require('./config.js');
 const createHash = require('./crypto.js')
+const hexToBinary = require('hex-to-binary');
+
 
 class Block {
     constructor({ timestamp, previousHash, hash, data, nonce, difficulty }) {
@@ -28,7 +30,7 @@ class Block {
             timestamp = Date.now();
             difficulty = Block.adjustDifficulty({ originalBlock: previousBlock, timestamp });
             hash = createHash(timestamp, previousHash, data, nonce, difficulty);
-        } while (!hash.startsWith('0'.repeat(difficulty)));
+        } while (!hexToBinary(hash).startsWith('0'.repeat(difficulty)));
         //00cdef first no. of difficulty characters of hash should be equal to 00 i.e. no. of difficulty
 
         const block = new this({

@@ -50,6 +50,11 @@ class Blockchain {
                 return false;
             }
 
+            // check if difficulty is incresed by more than 1
+            if ( Math.abs(previousBlock.difficulty - currentBlock.difficulty) > 1) {
+                return false;
+            }
+
         }
         return true;
     }
@@ -71,10 +76,16 @@ class Blockchain {
     }
 }
 
-const blockchain = new Blockchain();
-blockchain.addBlock({data:"blockchain data 1"})
-blockchain.addBlock({data:"blockchain data 2"})
 
-console.log(Blockchain.isChainValid(blockchain.chain));
-console.log(blockchain);
+//============to play around=================
+// const blockchain = new Blockchain();
+// for( let i = 0; i< 20;i++){
+//     blockchain.addBlock({data:`blockchain data ${i}`})
+
+// }
+
+// console.log(Blockchain.isChainValid(blockchain.chain));
+// console.log(blockchain);
+
+//===================================================================
 module.exports = Blockchain;
