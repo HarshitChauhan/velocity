@@ -79,7 +79,7 @@ class Blockchain {
 
 //============to play around=================
 // const blockchain = new Blockchain();
-// for( let i = 0; i< 20;i++){
+// for( let i = 0; i< 10;i++){
 //     blockchain.addBlock({data:`blockchain data ${i}`})
 
 // }
