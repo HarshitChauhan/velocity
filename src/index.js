@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Blockchain = require('./blockchain');
+const PubSub = require('./pubsub');
 const blockchain = new Blockchain();
 
 const PORT = 3001;
 const app = express();
+const pubsub = new PubSub({blockchain});
+setTimeout(()=> pubsub.broadcastChain(),1000);
+
 app.use(bodyParser.json());
 // for( let i = 0; i< 10;i++){
 //     blockchain.addBlock({data:`blockchain data ${i}`})
